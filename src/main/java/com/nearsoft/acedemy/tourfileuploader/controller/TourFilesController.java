@@ -2,16 +2,17 @@ package com.nearsoft.acedemy.tourfileuploader.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
 @RequestMapping("/tours/uploads")
 public class TourFilesController {
-    @GetMapping
-    public ResponseEntity<String> uploadTourFile() {
-
-        return ResponseEntity.ok("Hola Mundo");
+    @PostMapping
+    public ResponseEntity<String> uploadTourFile(@RequestParam("file") MultipartFile multipartFile) {
+        return ResponseEntity.badRequest().body("");
     }
+
 
 
     /*@RequestMapping(value="/method8/{id:[\\d]+}/{name}")

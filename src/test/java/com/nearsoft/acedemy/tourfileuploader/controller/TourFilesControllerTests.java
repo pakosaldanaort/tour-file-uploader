@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -34,11 +35,13 @@ public class TourFilesControllerTests {
 
 
     @Test
-    public void uploadFileTest() throws Exception {
-        mockMvc.perform(get("/tours/uploads"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Hola Mundo"))
+    public void uploadTourFile_shouldReturnBadRequestDueToFileIsNotAttach() throws Exception {
+        mockMvc.perform(post("/tours/uploads")
+                .contentType("multipart/form-data"))
+                .andExpect(status().isBadRequest())
                 .andDo(print());
+
+
     }
 
 
