@@ -39,6 +39,7 @@ public class TourFilesControllerTests {
         mockMvc.perform(post("/tours/uploads")
                 .contentType("multipart/form-data"))
                 .andExpect(status().isBadRequest())
+                //.andExpect(content().string("File not attached"))
                 .andDo(print());
 
 
